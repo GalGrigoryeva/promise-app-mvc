@@ -1,19 +1,16 @@
 import {EventEmitter} from "events";
 
-let idCounter = 0;
-
 export class ToDoModel extends EventEmitter {
   _toDoText;
   _completed;
   _id = 0;
 
-  constructor (defaultToDoText, defaultCompleted) {
+  constructor (id, defaultToDoText, defaultCompleted) {
     super();
 
     this._toDoText = defaultToDoText;
     this._completed = defaultCompleted;
-    this._id = idCounter;
-    idCounter++;
+    this._id = id;
   }
 
   get toDoText() {
@@ -27,7 +24,7 @@ export class ToDoModel extends EventEmitter {
 
     this._toDoText = value;
 
-    this.emit("change");
+    this.emit("change", this);
   }
 
   get completed() {
@@ -41,7 +38,7 @@ export class ToDoModel extends EventEmitter {
 
     this._completed = value;
 
-    this.emit("change");
+    this.emit("change", this);
   }
 
 

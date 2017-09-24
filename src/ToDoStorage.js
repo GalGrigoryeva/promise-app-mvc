@@ -9,8 +9,10 @@ export class ToDoStorage extends EventEmitter {
   };
 
   removeToDoById = (toDoId) => {
-    delete this.toDoMap[toDoModel.id]; // Удаление объекта из хранилища
-    this.emit("todo_removed");
+    let toDoModel = this.getToDo(toDoId);
+
+    delete this.toDoMap[toDoId]; // Удаление объекта из хранилища
+    this.emit("todo_removed", toDoModel);
   };
 
   getToDo = (toDoId) => {
