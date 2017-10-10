@@ -1,2 +1,2 @@
 # promise-app-mvc
-Fisrt application based on the MV pattern.
+First application based on the MV pattern.
